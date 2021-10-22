@@ -13,12 +13,14 @@ public class Collectible : MonoBehaviour
     }
 
     [SerializeField] private CollectibleType _type;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Tags.Player))
         {
-            
+            Debug.Log(other.name);
         }
     }
+
+    
 }

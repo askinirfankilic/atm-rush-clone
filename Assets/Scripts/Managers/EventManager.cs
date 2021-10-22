@@ -17,5 +17,12 @@ public class EventManager
      public static void Invoke_OnMouseInputUp(Vector3 mousePos){OnMouseInputUp?.Invoke(mousePos);}
 
      #endregion
+
+     #region Gameplay
+
+     public static event Action<Collider> OnCollectiblePlayerCollision;
+     public static void Invoke_OnCollectiblePlayerCollision(Collider collectible){OnCollectiblePlayerCollision?.Invoke(collectible);}
+
+     #endregion
      
 }

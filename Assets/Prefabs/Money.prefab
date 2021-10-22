@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5979851584624074632}
   m_Layer: 0
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a44b987935a7be42b0eaf2038f3818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
 --- !u!33 &5337756911942605934
 MeshFilter:
   m_ObjectHideFlags: 0
