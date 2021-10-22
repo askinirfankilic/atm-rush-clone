@@ -20,7 +20,7 @@ public abstract class Movement : MonoBehaviour
     public void Move(Vector3 direction)
     {
         Vector3 directionAlongSurface = _surfaceSlider.Project(direction);
-        Vector3 offset = directionAlongSurface * (_speed * Time.deltaTime);
+        Vector3 offset = directionAlongSurface * (_speed * Time.fixedDeltaTime);
 
         _rigidbody.MovePosition(_rigidbody.position + offset);
     }

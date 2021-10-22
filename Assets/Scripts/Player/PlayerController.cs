@@ -3,19 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoSingleton<PlayerController>
 {
+    #region Public Fields
+
+    public List<GameObject> collectibles;
+
+    #endregion
     #region Serialized Fields
 
     [SerializeField] private GameObject _stackInserter;
+    
+    #endregion
+
+    #region private Fields
+
+    private Rigidbody _playerRb;
+    private Vector3 rbVelocity;
 
     #endregion
-    private void OnTriggerEnter(Collider other)
+
+    #region Properties
+
+    public Vector3 RbVelocity
     {
-        if (other.CompareTag(Tags.Collectible))
-        {
-            Debug.Log("ASDADASDDSADSD");
-            EventManager.Invoke_OnCollectiblePlayerCollision(other);
-        }
+        get => rbVelocity;
+        set => rbVelocity = value;
+    }
+
+    #endregion
+
+    private void Awake()
+    {
+        _playerRb = GetComponent<Rigidbody>();
+        collectibles = new List<GameObject>();
     }
 }

@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1c431632e6b3f4ea8d386d4dde2804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextStackOffset: 1.5
+  _nextStackOffset: 1
 --- !u!1 &5283071013999293650
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9e84fb794ce6b4b85e7cbb8e37bdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stackInserter: {fileID: 2116450494}
 --- !u!114 &5283071014940851219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cda72d94b5e2d84582559edb57584bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 10
   _minLimitAmount: -5
   _maxLimitAmount: 5
 --- !u!114 &5283071014940851218
