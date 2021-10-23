@@ -10,10 +10,9 @@ public class PlayerController : MonoSingleton<PlayerController>
     public List<GameObject> collectibles;
 
     #endregion
+
     #region Serialized Fields
 
-    [SerializeField] private GameObject _stackInserter;
-    
     #endregion
 
     #region private Fields
