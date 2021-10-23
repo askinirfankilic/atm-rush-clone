@@ -29,7 +29,7 @@ public class EventManager
     }
 
     #endregion
-
+    
     #region Gameplay
 
     public static event Action<Collider> OnCollectiblePlayerCollision;
