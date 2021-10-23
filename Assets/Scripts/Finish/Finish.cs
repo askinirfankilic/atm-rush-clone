@@ -30,5 +30,10 @@ public class Finish : MonoBehaviour
             }
             
         }
+
+        if (other.CompareTag(Tags.Player))
+        {
+            EventManager.Invoke_OnScoreChange();
+        }
     }
 }

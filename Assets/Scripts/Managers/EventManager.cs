@@ -67,5 +67,19 @@ public class EventManager
         OnCollectibleUpgrade.Invoke(collectible, type);
     }
 
+    public static event Action<int> OnATMTrigger;
+
+    public static void Invoke_OnATMTrigger(int scoreFactor)
+    {
+        OnATMTrigger.Invoke(scoreFactor);
+    }
+
+    public static event Action<int> OnCollectionSpread;
+
+    public static void Invoke_OnCollectionSpread(int index)
+    {
+        OnCollectionSpread.Invoke(index);
+    }
+
     #endregion
 }

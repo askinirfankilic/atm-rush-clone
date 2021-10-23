@@ -7,8 +7,10 @@ using UnityEngine.SocialPlatforms.Impl;
 public class ScoreManager : MonoSingleton<ScoreManager>
 {
     [SerializeField] private int _score;
+    [SerializeField] private int _storedScore;
 
     public int Score => _score;
+    public int StoredScore => _storedScore;
 
     private void Awake()
     {
@@ -25,13 +27,20 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         _score -= score;
     }
 
+    private void StoreScore(int scoreFactor)
+    {
+        _storedScore += scoreFactor;
+    }
+
     private void OnEnable()
     {
         EventManager.OnScoreIncrement += IncrementScore;
+        EventManager.OnATMTrigger += StoreScore;
     }
 
     private void OnDisable()
     {
         EventManager.OnScoreIncrement -= IncrementScore;
+        EventManager.OnATMTrigger -= StoreScore;
     }
 }

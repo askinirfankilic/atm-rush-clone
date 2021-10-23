@@ -29,12 +29,33 @@ public class PlayerController : MonoSingleton<PlayerController>
         get => rbVelocity;
         set => rbVelocity = value;
     }
-
+    
     #endregion
 
     private void Awake()
     {
         _playerRb = GetComponent<Rigidbody>();
         collectibles = new List<GameObject>();
+    }
+
+    private void SpreadCollection(int startingIndex)
+    {
+        for (int i = collectibles.Count - 1; i >= startingIndex; i--)
+        {
+            //burada dagit
+                
+            Destroy(collectibles[i]);
+            collectibles.RemoveAt(i);
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnCollectionSpread += SpreadCollection;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnCollectionSpread -= SpreadCollection;
     }
 }

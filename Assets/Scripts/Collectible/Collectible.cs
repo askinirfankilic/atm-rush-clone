@@ -16,6 +16,7 @@ public class Collectible : MonoBehaviour
     #region Public Fields
 
     public CollectibleType _type;
+    public int _scoreFactor;
 
     #endregion
 
@@ -30,7 +31,6 @@ public class Collectible : MonoBehaviour
     #region Serialized Fields
 
     [SerializeField] private float _distanceBetweenCollectibles = 1.2f;
-    [SerializeField] private int _scoreFactor;
     [SerializeField] private List<Material> _typeMaterials;
     [SerializeField] private bool isInPlayer = false;
     [SerializeField] private GameObject _lastCollectible;
