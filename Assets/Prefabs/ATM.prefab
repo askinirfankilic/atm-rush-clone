@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6866476702357183736}
+  - component: {fileID: 5916642151499325220}
   - component: {fileID: 6866476702357183737}
   - component: {fileID: 6866476702357183734}
   - component: {fileID: 6866476702357183735}
   - component: {fileID: 6866476702357183733}
-  - component: {fileID: 5916642151499325220}
   m_Layer: 0
   m_Name: ATM
-  m_TagString: Untagged
+  m_TagString: ATM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5916642151499325220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866476702357183732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59fa36a8188e3c49ac40248cf3e9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &6866476702357183737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -113,15 +125,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5916642151499325220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6866476702357183732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59fa36a8188e3c49ac40248cf3e9acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

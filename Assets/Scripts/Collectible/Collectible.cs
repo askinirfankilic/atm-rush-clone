@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Random = System.Random;
 
 
 public class Collectible : MonoBehaviour
@@ -17,6 +19,9 @@ public class Collectible : MonoBehaviour
 
     public CollectibleType _type;
     public int _scoreFactor;
+    public bool isInPlayer = false;
+    public bool isLastCollectible = false;
+    public GameObject _lastCollectible;
 
     #endregion
 
@@ -32,8 +37,6 @@ public class Collectible : MonoBehaviour
 
     [SerializeField] private float _distanceBetweenCollectibles = 1.2f;
     [SerializeField] private List<Material> _typeMaterials;
-    [SerializeField] private bool isInPlayer = false;
-    [SerializeField] private GameObject _lastCollectible;
     [SerializeField] private float _collectibleMovementDuration;
 
     #endregion
@@ -46,6 +49,8 @@ public class Collectible : MonoBehaviour
         _objCollider = GetComponent<Collider>();
         _objRigidbody = GetComponent<Rigidbody>();
         _scoreFactor = 1;
+
+        DOTween.Init();
     }
 
     private void Start()
@@ -67,7 +72,9 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Tags.Player) && !isInPlayer)
+        Collectible otherCollectible = other.GetComponent<Collectible>();
+        
+        if (other.CompareTag(Tags.Player) && !isInPlayer && !PlayerController.Instance.isInATM)
         {
             _objCollider.isTrigger = false;
             Destroy(_objRigidbody);
@@ -76,24 +83,40 @@ public class Collectible : MonoBehaviour
             {
                 _lastCollectible = PlayerController.Instance.gameObject;
                 _collectibles.Add(gameObject);
+                isLastCollectible = true;
             }
             else
             {
                 _lastCollectible = _collectibles[_collectibles.Count - 1];
+                _lastCollectible.GetComponent<Collectible>().isLastCollectible = false;
+                
                 _collectibles.Add(gameObject);
+                isLastCollectible = true;
             }
+
 
             isInPlayer = true;
         }
 
-        if (other.CompareTag(Tags.Collectible) && !isInPlayer)
+        
+        if (other.CompareTag(Tags.Collectible) && !isInPlayer && otherCollectible.isInPlayer && !PlayerController.Instance.isInATM)
         {
+            isLastCollectible = true;
             _objCollider.isTrigger = false;
             Destroy(_objRigidbody);
 
             _lastCollectible = _collectibles[_collectibles.Count - 1];
+            _lastCollectible.GetComponent<Collectible>().isLastCollectible = false;
             _collectibles.Add(gameObject);
+
+
             isInPlayer = true;
+            
+        }
+
+        if (other.CompareTag(Tags.Collectible) && !isInPlayer && !otherCollectible.isInPlayer )
+        {
+            
         }
     }
 
@@ -130,7 +153,8 @@ public class Collectible : MonoBehaviour
         Vector3 startingPos = transform.position;
         while (t < _collectibleMovementDuration)
         {
-            transform.position = Vector3.Lerp(startingPos, _lastCollectible.transform.position + Vector3.forward * _distanceBetweenCollectibles,
+            transform.position = Vector3.Lerp(startingPos,
+                _lastCollectible.transform.position + Vector3.forward * _distanceBetweenCollectibles,
                 t / _collectibleMovementDuration);
             t += Time.deltaTime;
             yield return null;
