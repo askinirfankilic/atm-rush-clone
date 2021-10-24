@@ -68,13 +68,28 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
+    private void LoadFinishAnimation()
+    {
+        StartCoroutine(WaitFinish());
+    }
+
+    private IEnumerator WaitFinish()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        transform.position = new Vector3(0f, 1.5f, 220f);
+    }
+
     private void OnEnable()
     {
         EventManager.OnCollectionSpread += SpreadCollection;
+        EventManager.OnLevelFinish += LoadFinishAnimation;
     }
 
     private void OnDisable()
     {
         EventManager.OnCollectionSpread -= SpreadCollection;
+        EventManager.OnLevelFinish -= LoadFinishAnimation;
+
     }
 }

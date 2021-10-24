@@ -13,7 +13,6 @@ public class ATM : MonoBehaviour
     {
         if (transform.position.z < PlayerController.Instance.transform.position.z && !isAlready)
         {
-            // Debug.LogError("IT ISNT IN ATM");
             if (PlayerController.Instance.isInATM)
             {
                 PlayerController.Instance.isInATM = false;
@@ -61,7 +60,6 @@ public class ATM : MonoBehaviour
                 else
                 {
                     
-                    Debug.Log("INDEX:    " + index);
                     PlayerController.Instance.collectibles.RemoveAt(index);
                     Destroy(collectible.gameObject);
 

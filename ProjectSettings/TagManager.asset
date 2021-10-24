@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectible
   - ATM
+  - Obstacle
   layers:
   - Default
   - TransparentFX

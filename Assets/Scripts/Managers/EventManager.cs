@@ -82,4 +82,15 @@ public class EventManager
     }
 
     #endregion
+
+    #region Finish
+
+    public static event Action OnLevelFinish;
+
+    public static void Invoke_OnLevelFinish()
+    {
+        OnLevelFinish.Invoke();
+    }
+
+    #endregion
 }
